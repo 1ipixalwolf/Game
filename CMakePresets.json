@@ -1,0 +1,84 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 19,
+      "patch": 0
+    },
+    "configurePresets": [
+      {
+        "name": "default",
+        "hidden": true,
+        "generator": "Ninja",
+        "binaryDir": "${sourceDir}/build/${presetName}",
+        "cacheVariables": {
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        }
+      },
+      {
+        "name": "macos-debug",
+        "inherits": "default",
+        "description": "Build for macOS in Debug mode",
+        "vendor": {
+          "apple": {
+            "xcode": false
+          }
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+        }
+      },
+      {
+        "name": "macos-release",
+        "inherits": "default",
+        "description": "Build for macOS in Release mode",
+        "vendor": {
+          "apple": {
+            "xcode": false
+          }
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+        }
+      },
+      {
+        "name": "windows-debug",
+        "inherits": "default",
+        "description": "Build for Windows in Debug mode",
+        "generator": "Visual Studio 17 2022",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug"
+        }
+      },
+      {
+        "name": "windows-release",
+        "inherits": "default",
+        "description": "Build for Windows in Release mode",
+        "generator": "Visual Studio 17 2022",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "build-debug",
+        "configurePreset": "macos-debug"
+      },
+      {
+        "name": "build-release",
+        "configurePreset": "macos-release"
+      },
+      {
+        "name": "build-windows-debug",
+        "configurePreset": "windows-debug"
+      },
+      {
+        "name": "build-windows-release",
+        "configurePreset": "windows-release"
+      }
+    ]
+  }
+  
