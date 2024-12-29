@@ -11,6 +11,10 @@ using namespace std;
 
 void dread(Combatents* player) {
     string location = "stories/";
+    string base;
+    bool fast;
+    if (player->GetAttack() < 30) {fast = false;}
+    else {fast = true;}
 
     //Vector of possible file names
     vector<string> chapters;
@@ -22,6 +26,7 @@ void dread(Combatents* player) {
 
 
     cout << "Welcome to your story!" << endl;
+    cout << "To return to the main minu, type x" << endl;
     cout << "Type a number between 1 and 5." << endl;
     
     //Give user control of what file is opend
@@ -50,13 +55,17 @@ void dread(Combatents* player) {
         i = 4;
         break;
     }
+    case 'x': {
+        return;
+    }
     default: {
         cout << "Invalid choise.";
         break;
     }
     }
+    base = location + chapters.at(i) + "/";
+    location = base + chapters.at(i) + ".txt";
     
-    location += chapters.at(i) + "/" + chapters.at(i) + ".txt";
     //Open salected file
     ifstream story;
     story.open(location);
@@ -78,41 +87,46 @@ void dread(Combatents* player) {
 
     // First choise 
     cin >> choise;
-    if (i == 0) {
-        if (choise == 'a') {
-            //Open salected file
-            story.open("stories/robot/a.txt");
-            
-            if (story.is_open()) {
-                // Read each line from the file and store it in line
-                while (getline(story, line)) {
-                    cout << line << endl;
-                }
-
-                // Close the file stream once all lines have been read
-                story.close();
-
-                if (player->GetAttack() < 30) {
-                    cout << "Red is tragically broken. The end" << endl;
-                }
-            }
-            else {
-                // Print an error message if the file cannot be opened
-                cout << "Unable to open file!" << endl;
-            }
+    switch (choise)
+    {
+    case 'a': {
+        location = base + "a.txt";
+        break;
+    }
+    case 'b': {
+        location = base + "b.txt";
+        break;
+    }
+    case 'c': {
+        location = base + "c.txt";
+        break;
+    }
+    case 'x': {
+        return;
+    }
+    default:
+        break;
+    }
+    //Open salected file
+    story.open(location);      
+    if (story.is_open()) {
+        // Read each line from the file and store it in line
+        while (getline(story, line)) {
+            cout << line << endl;
         }
-        
+        // Close the file stream once all lines have been read
+        story.close();
+    }
+    else {
+        // Print an error message if the file cannot be opened
+        cout << "Unable to open file!" << endl;
     }
     
+    if ((i == 0) && (choise == 'a')) {
+        if (!fast) {
+            cout << "Red is tragically broken. The end" << endl;
+        }
+    }
     cout << "Thanks for stopping in! Good by!" << endl;
 
 }
-
-// // For testing
-// int main() {
-//     Combatents* player = new Combatents();
-//     player->SetAttack(2);
-//     player->SetHealth(3);
-//     dread(player);
-//     return 0;
-// }

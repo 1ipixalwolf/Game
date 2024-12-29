@@ -1,0 +1,5 @@
+Red runs away. All the robots it passes try to ask if it needs any assistance. When Red does not respond, they start to move towards it. Their questions switch to asking if something is wrong with Red. Several send requests for assistance from a supervisor. As Red nears the door to the workroom, one robot moves in front of Red. “Stop! Where are you going? What do you require? Are you experiencing a bug or virus?” It demands.
+Does Red 
+a: Keep running
+b: Answer 
+c: Smash

@@ -1,0 +1,7 @@
+Red decides the cutter needs to be stopped immediately. Following emergency protocol, Red uses its built in fire extinguisher to douse the entire area in foam. Then it uses its armored probe to punch the flat side of the cutter’s still slicing blade. The blade shatters into dust! 
+The cutter still vibrates, but without its blade, it is just a shaking box. Red retracts its probe and plunges its hands into the box. Red quickly shuts it off, disconnecting the power supply for good measure. 
+Box disabled, Red turns to the robot. It is still on the ground, but it is now sitting up. Red scans it. “No major damage. Dents and scratch as well as a 15.3 second laps in operation and memory that caused an involuntary restart. Please provide your report on the incident.” Red’s request is not answered at first. Finally the robot sends a report. It is strange. Red does not understand it. 
+Does Red
+a Check again
+b Delete 
+c Send to supervisor

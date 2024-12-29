@@ -4,10 +4,9 @@
 #include "main.h"
 #include "combatents.h"
 #include "fight.h"
-using namespace std;
 
 int fight(Combatents* player) {
-    int wens;
+    int wens = 0;
     char move;
     char playMore;
     bool currEbeeten = false;
@@ -44,7 +43,7 @@ int fight(Combatents* player) {
                 break;
             case 'q':
                 cout << "Good Game!" << endl;
-                break;
+                return wens;
             default:
                 cout << "invalid. Try again." << endl;
                 cin >> move;
@@ -86,21 +85,24 @@ int fight(Combatents* player) {
         // Adjust enamy stats based on wens
         switch (wens)
         {
-        case 0:
+        case 0: {
             break;
-        case 5:
+        }
+        case 5: {
             eh += 10;
             ea += 10;
             break;
-        case 15:
+        }
+        case 15: {
             eh += 20;
             ea += 20;
             break;
-            
-        default:
+        }
+        default: {
             eh += 2;
             ea += 2;
             break;
+        }
         }
 
     }while(playMore == 'y');

@@ -2,61 +2,31 @@
     "version": 3,
     "cmakeMinimumRequired": {
       "major": 3,
-      "minor": 19,
-      "patch": 0
+      "minor": 10
     },
     "configurePresets": [
       {
         "name": "default",
-        "hidden": true,
+        "description": "Default configuration preset",
         "generator": "Ninja",
-        "binaryDir": "${sourceDir}/build/${presetName}",
+        "binaryDir": "${sourceDir}/build",
         "cacheVariables": {
-          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+          "CMAKE_CXX_STANDARD": "17",
+          "CMAKE_CXX_STANDARD_REQUIRED": "ON"
         }
       },
       {
-        "name": "macos-debug",
+        "name": "debug",
+        "description": "Debug build configuration",
         "inherits": "default",
-        "description": "Build for macOS in Debug mode",
-        "vendor": {
-          "apple": {
-            "xcode": false
-          }
-        },
-        "cacheVariables": {
-          "CMAKE_BUILD_TYPE": "Debug",
-          "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
-        }
-      },
-      {
-        "name": "macos-release",
-        "inherits": "default",
-        "description": "Build for macOS in Release mode",
-        "vendor": {
-          "apple": {
-            "xcode": false
-          }
-        },
-        "cacheVariables": {
-          "CMAKE_BUILD_TYPE": "Release",
-          "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
-        }
-      },
-      {
-        "name": "windows-debug",
-        "inherits": "default",
-        "description": "Build for Windows in Debug mode",
-        "generator": "Visual Studio 17 2022",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Debug"
         }
       },
       {
-        "name": "windows-release",
+        "name": "release",
+        "description": "Release build configuration",
         "inherits": "default",
-        "description": "Build for Windows in Release mode",
-        "generator": "Visual Studio 17 2022",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Release"
         }
@@ -65,19 +35,22 @@
     "buildPresets": [
       {
         "name": "build-debug",
-        "configurePreset": "macos-debug"
+        "description": "Build using the debug configuration",
+        "configurePreset": "debug",
+        "targets": ["all"]
       },
       {
         "name": "build-release",
-        "configurePreset": "macos-release"
-      },
+        "description": "Build using the release configuration",
+        "configurePreset": "release",
+        "targets": ["all"]
+      }
+    ],
+    "testPresets": [
       {
-        "name": "build-windows-debug",
-        "configurePreset": "windows-debug"
-      },
-      {
-        "name": "build-windows-release",
-        "configurePreset": "windows-release"
+        "name": "test",
+        "description": "Run tests after building",
+        "configurePreset": "default"
       }
     ]
   }

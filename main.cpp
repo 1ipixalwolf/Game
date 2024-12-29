@@ -16,7 +16,7 @@ void menu() {
 
     // Read stats from file
     ifstream upstats("stats.txt");
-    int playerHealth = 3;  // Default health
+    int playerHealth = 2;  // Default health
     int playerAttack = 2;  // Default attack
 
     if (upstats.is_open()) {
