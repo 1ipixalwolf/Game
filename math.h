@@ -1,4 +1,4 @@
 #ifndef MATH
 #define MATH
-int math(Combatents* player);
+int math(Combatants* player);
 #endif 

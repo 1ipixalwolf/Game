@@ -1,4 +1,4 @@
 #ifndef SLEEP
 #define SLEEP
-char sleep(Combatents* player);
+char sleep(Combatants* player);
 #endif 

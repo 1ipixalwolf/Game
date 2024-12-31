@@ -1,4 +1,4 @@
 #ifndef DREAD
 #define DREAD
-void dread(Combatents* player);
+void dread(Combatants* player);
 #endif 

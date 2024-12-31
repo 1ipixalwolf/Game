@@ -1,11 +1,11 @@
 #include<iostream>
 #include<cmath>
 #include "main.h"
-#include "combatents.h"
+#include "Combatants.h"
 #include "math.h"
 using namespace std;
 
-int math(Combatents* player)
+int math(Combatants* player)
 {
     int solved = 0;
     int ans;
@@ -50,5 +50,6 @@ int math(Combatents* player)
     if (stat == 'a') {player->SetAttack(player->GetAttack() + solved);}
     else if (stat == 'b') {player->SetHealth(player->GetHealth() + solved);}
 
+    cout << endl << endl;
     return solved;
 }

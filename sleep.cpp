@@ -1,11 +1,11 @@
 #include<iostream>
 #include "main.h"
-#include "combatents.h"
+#include "Combatants.h"
 #include "sleep.h"
 using namespace std;
 
 //This game is designed to make the user exit and go to bed
-char sleep(Combatents* player) {
+char sleep(Combatants* player) {
     string nothing;
 
     cout << "You're trying to sleep" << endl;
@@ -23,5 +23,7 @@ char sleep(Combatents* player) {
     }
 
     player->SetHealth(player->GetHealth() + rest);
+    cout << endl << endl;
+
     return 'z';
 }

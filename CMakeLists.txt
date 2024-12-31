@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Define the source files
 set(SOURCES
     game/main.cpp
-    game/combatents.cpp
+    game/Combatants.cpp
     game/fight.cpp
     game/sleep.cpp
     game/dread.cpp
@@ -20,7 +20,7 @@ set(SOURCES
 # Define the header files
 set(HEADERS
     game/main.h
-    game/combatents.h
+    game/Combatants.h
     game/fight.h
     game/sleep.h
     game/dread.h

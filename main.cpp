@@ -1,7 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<limits>
-#include "combatents.h"
+#include "Combatants.h"
 #include "dread.h"
 #include "fight.h"
 #include "math.h"
@@ -12,7 +12,7 @@ using namespace std;
 // Display the game menu
 void menu() {
     // Create the player with a pointer
-    Combatents* player = new Combatents();
+    Combatants* player = new Combatants();
 
     // Read stats from file
     ifstream upstats("stats.txt");
@@ -67,7 +67,7 @@ void menu() {
             break;
         }
         case 5: {
-            cout << "Exitting and saving game." << endl;
+            cout << "Exiting and saving game." << endl;
             ofstream updateStats_out;
             updateStats_out.open("stats.txt");
             if (updateStats_out.is_open()) {
