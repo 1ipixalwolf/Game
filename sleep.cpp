@@ -1,6 +1,6 @@
 #include<iostream>
 #include "main.h"
-#include "Combatants.h"
+#include "combatants.h"
 #include "sleep.h"
 using namespace std;
 
@@ -8,7 +8,7 @@ using namespace std;
 char sleep(Combatants* player) {
     string nothing;
 
-    cout << "You're trying to sleep" << endl;
+    cout << "You're trying to sleep " << player->GetName() << endl;
     for (int i = 0; i < 4; i++) {
         cin >> nothing;
         cout << "Sleep" << endl;
@@ -23,7 +23,7 @@ char sleep(Combatants* player) {
     }
 
     player->SetHealth(player->GetHealth() + rest);
-    cout << endl << endl;
+    cout << "Ok, fine " << player->GetName() << ", you can wake up." << endl << endl;
 
     return 'z';
 }

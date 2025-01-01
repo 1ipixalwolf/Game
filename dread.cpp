@@ -4,7 +4,7 @@
 #include<string>
 #include<vector>
 #include "main.h"
-#include "Combatants.h"
+#include "combatants.h"
 #include "dread.h"
 
 using namespace std;

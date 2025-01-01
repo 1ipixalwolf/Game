@@ -20,7 +20,7 @@ set(SOURCES
 # Define the header files
 set(HEADERS
     game/main.h
-    game/Combatants.h
+    game/combatants.h
     game/fight.h
     game/sleep.h
     game/dread.h

@@ -2,43 +2,47 @@
 #include<ctime>  // For srand and rand()
 #include<thread> 
 #include "main.h"
-#include "Combatants.h"
+#include "combatants.h"
 #include "fight.h"
 
 int fight(Combatants* player) {
     int wens = 0;
-    char move;
+    int enemyMove = 2; 
     char playMore;
     bool super = false;
     
     // Store player stats in temp variables
-    int pa = player->GetAttack();
-    int ph = player->GetHealth();
+    int playerAttack = player->GetAttack();
+    int playerHealth = player->GetHealth();
     
     //Create an enemy
-    Combatants e1;
-    e1.SetAttack(1);
-    e1.SetHealth(2);
-    int ea = e1.GetAttack();
-    int eh = e1.GetHealth();
+    Combatants enemy;
+    enemy.GenerateRandomName();
+    enemy.SetAttack(1);
+    enemy.SetHealth(2);
+    int enemyAttack = enemy.GetAttack();
+    int enemyHealth = enemy.GetHealth();
 
     do {
         //Loop to take turns until the enemy is at 0 health
-        while(eh > 0) {
+        while(enemyHealth > 0) {
             //Print stats for user to see their progress
-            cout << "Your Stats: " << "Attack " << pa << " Health " << ph << endl;
-            cout << "Enemy Stats: " << "Attack " << ea << " Health " << eh << endl;
+            player->PrintStats();
+            enemy.PrintStats();
 
             cout << "Your move! Type / to attack or o to defend" << endl;
-            cin >> move;
-            switch (move)
+            char playerMove; 
+            cin >> playerMove;
+            switch (playerMove)
             {
             case '/':
-                eh -= pa;
-                cout << "Hit!" << endl;
-                break;
+                if (enemyMove == 0) {break;}
+                else {
+                    enemyHealth -= playerAttack;
+                    cout << "Hit!" << endl;
+                    break;
+                }
             case 'o':
-                ph++;
                 cout << "Protect" << endl;
                 break;
             case 'q':
@@ -46,35 +50,37 @@ int fight(Combatants* player) {
                 return wens;
             default:
                 cout << "invalid. Try again." << endl;
-                cin >> move;
+                cin >> playerMove;
                 break;
             }
 
             //Stop game if enemy is already dead
-            if (eh <= 0) {
+            if (enemyHealth <= 0) {
                 cout << "Win!" << endl;
                 wens++;
                 break;
             }
 
-            // Pause for 3 seconds before continuing
+            // pause for 3 seconds before continuing
             this_thread::sleep_for(chrono::seconds(3));
             
+            enemyMove = rand() % 2;     // Enemy randomly decides to defend or attack
             //Enemy's turn
             cout << "Enemy's Turn: " << endl;
-            //Randomly decide to heal or attack
-            int em = rand() % 2;
-            if (em == 0) {
+            if (enemyMove == 0) {
                 cout << "o Enemy healed" << endl;
-                eh++;
             }
             else {
-                cout << "/ you're hit!" << endl;
-                ph--;
+                cout << "/" << endl;
+                if (playerMove == 'o') {cout << "Blocked" << endl;}
+                else {
+                    cout << "You're hit!" << endl;
+                    playerHealth -= enemyAttack;
+                }
             }
 
             // Lose condition
-            if (ph <= 0) {
+            if (playerHealth <= 0) {
                 cout << "Defeated!" << endl;
                 break;
             }
@@ -89,21 +95,26 @@ int fight(Combatants* player) {
             break;
         }
         case 5: {
-            eh += 10;
-            ea += 10;
+            enemy.GenerateRandomName();
+            enemyAttack += 10;
+            enemyHealth += 10;
             break;
         }
         case 15: {
-            eh += 20;
-            ea += 20;
+            enemy.GenerateRandomName();
+            enemyHealth += 20;
+            enemyAttack += 20;
             break;
         }
         default: {
-            eh += 2;
-            ea += 2;
+            enemy.GenerateRandomName();
+            enemyHealth += 2;
+            enemyAttack += 2;
             break;
         }
         }
+        enemy.SetAttack(enemyAttack);
+        enemy.SetHealth(enemyHealth);
 
     } while (playMore == 'y');
     

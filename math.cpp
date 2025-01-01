@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include "main.h"
-#include "Combatants.h"
+#include "combatants.h"
 #include "math.h"
 using namespace std;
 
@@ -10,7 +10,7 @@ int math(Combatants* player)
     int solved = 0;
     int ans;
     srand(rand()%100);
-    cout << "Solve math problems to leval up! \nType 200 to exit." << endl;
+    cout << "Solve math problems to level up! \nType 200 to exit." << endl;
     while (true) {
         int a = 1 + rand() % 8;
         int b = 1 + rand() % 12;
@@ -31,7 +31,7 @@ int math(Combatants* player)
             cin >> ans;
         }
     }
-    cout << "Great job!! \nyou solved " << solved << " problems!" << endl;
+    cout << "Great job " << player->GetName() << "!! You solved " << solved << " problems!" << endl;
     cout << "Points: " << solved << endl;
 
     char stat; 

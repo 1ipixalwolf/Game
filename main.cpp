@@ -1,7 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<limits>
-#include "Combatants.h"
+#include "combatants.h"
 #include "dread.h"
 #include "fight.h"
 #include "math.h"
@@ -16,10 +16,12 @@ void menu() {
 
     // Read stats from file
     ifstream upstats("stats.txt");
+    string playerName = "Player";
     int playerHealth = 2;  // Default health
     int playerAttack = 2;  // Default attack
-
+    
     if (upstats.is_open()) {
+        getline(upstats, playerName);
         upstats >> playerAttack >> playerHealth;
         upstats.close();
     } else {
@@ -36,7 +38,8 @@ void menu() {
         cout << "2. Fight" << endl;
         cout << "3. Math" << endl;
         cout << "4. Sleep" << endl;
-        cout << "5. Exit" << endl;
+        cout << "5. Change Name" << endl;
+        cout << "6. Exit" << endl;
 
         int choice;
         cin >> choice;
@@ -67,16 +70,28 @@ void menu() {
             break;
         }
         case 5: {
+            cout << "Hi " << player->GetName() << " Do you want to change your name? y n" << endl;
+            char ask;
+            cin >> ask;
+            if (ask == 'y') {
+                cout << "What is your new name?" << endl;
+                getline(cin, playerName);
+                player->SetName(playerName);
+                cout << "Hi " << player->GetName() << endl;
+            }
+        }
+        case 6: {
             cout << "Exiting and saving game." << endl;
             ofstream updateStats_out;
             updateStats_out.open("stats.txt");
             if (updateStats_out.is_open()) {
+                updateStats_out << player->GetName() << endl;
                 updateStats_out << player->GetAttack() << " " << player->GetHealth();
                 updateStats_out.close();
             }
             else {cout << "Problem saving stats!" << endl;}
             delete player;
-            break;
+            return;
         }
         default: {
             cout << "Invalid choice" << endl;

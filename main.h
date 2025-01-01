@@ -1,5 +1,5 @@
 #ifndef MAIN
 #define MAIN
 int main();
-void menue();
+void menu();
 #endif 

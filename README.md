@@ -9,8 +9,7 @@ Current Goals:
     1. Continue improving existing features
     2. Require player to do other specific tasks from other sections to proceed in dread
     3. Improve formatting of console output 
-    4. Give enemies names
-    5. Add super ability to fight
-    6. Eventually: 
+    6. Add super ability to fight
+    7. Eventually: 
         Make pet subclass of Combatants class
         Add pets for player to obtain 
